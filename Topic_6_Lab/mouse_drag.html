@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <title>Mouse Events</title>
 
-<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
-
   <style>
 
     #canvas {
@@ -23,14 +21,14 @@
 
 <!--add an input for color-->
   <div class="input-button">
-    <label class="input-label">Color</label>
-    <input id="color-input" class="form-control">
+    <label class="input-label">Choose a Color</label>
+    <input id="color-input" type="color">
   </div>
 
 <!--add an input for Radius-->
 <div class="input-button">
   <label class="input-label">Range - set radius</label>
-  <input id="radius-input" class="form-control">
+  <input id="radius-input" type="number">
 </div>
 
 <script>
@@ -69,20 +67,14 @@
     let colorInput = document.querySelector('#color-input')
     let radiusInput = document.querySelector('#radius-input')
 
-    radiusInput.addEventListener('radius', function() {
-      let radius = this.value
+    // input variables
+    let radius = radiusInput.value
+    let color = colorInput.value
 
-
-    })
-
-    // colorInput.addEventListener('color', function() {
-    //   let color = this.value
-    // })
-
-    //Draw a circle centered under the mouse click
+    //Draw a circle centered under the mouse click; works with radius 5
     context.beginPath()
     context.arc(x, y, radius, 0, 6.3)  // (coordinates, radius, starting & ending angles)
-
+    context.strokeStyle = color
     context.lineWidth = 5
     context.stroke()
 

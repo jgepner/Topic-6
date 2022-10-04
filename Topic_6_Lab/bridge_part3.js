@@ -30,27 +30,30 @@ bridges.forEach(function(bridge) {
 let canvas = document.querySelector('#bridges-chart')
 let context = canvas.getContext('2d')
 
-// make a chart object: arguments: context, properties
+// create empty lists for bridge names and spans
+let listOfBridgeNames = []
+let listOfBridgeSpans = []
 
-bridges.forEach(function(bridge) {
-    let chart = new Chart(context, {
-        type: 'bar',
-        data: {
-            labels: bridge.name,
-            datasets: [ {
-                label: 'Bridge Span',
-                data: bridge.span
-            }]
-        }
-    })
+// making lists for bridge names and spans by looping through bridges
+bridges.forEach(function (bridge) {
+    bridgeName = bridge.name  // get bridge name
+    bridgeSpan = bridge.span  // get span for that bridge
+    listOfBridgeNames.push(bridgeName)  // list of bridge names
+    listOfBridgeSpans.push(bridgeSpan) // list of bridge spans
 })
 
-// let chart = new Chart(context, {
-//     type: 'bar',
-//     data: {
-//
-//     }
-//
-// })
+// make a chart object: arguments: context, properties
+let chart = new Chart(context, {
+    type: 'bar',
+    data: {
+        labels: listOfBridgeNames, // using list of bridge names
+        datasets: [ {
+            label: 'Bridge Span',
+            data: listOfBridgeSpans,  // using list of spans
+            backgroundColor: ['red', 'blue', 'green', 'orange', 'yellow']
+        }]
+    }
+})
+
 
 
